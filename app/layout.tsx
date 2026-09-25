@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./route-planner.css";
 import "./polish.css";
 
 export const metadata: Metadata = { title: "Gestão Vendas Tech", description: "Gestão comercial externa para equipes em campo" };
