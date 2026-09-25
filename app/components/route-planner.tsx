@@ -8,6 +8,11 @@ function mapsSearch(query: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 }
 
+function openExternal(url: string) {
+  const popup = window.open(url, "_blank", "noopener,noreferrer");
+  if (!popup) window.location.assign(url);
+}
+
 export default function RoutePlanner() {
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
@@ -38,7 +43,7 @@ export default function RoutePlanner() {
       setPlanned(true);
       return;
     }
-    window.open(mapsUrl, "_blank", "noopener,noreferrer");
+    openExternal(mapsUrl);
   }
 
   return (
@@ -49,7 +54,7 @@ export default function RoutePlanner() {
           <h2>Rotas comerciais</h2>
           <p>Monte o trajeto, estime o custo da viagem e encontre o que precisa pelo caminho.</p>
         </div>
-        <button className="secondary route-help" type="button" onClick={() => window.open("https://www.google.com/maps", "_blank", "noopener,noreferrer")}>Abrir Google Maps ↗</button>
+        <button className="secondary route-help" type="button" onClick={() => openExternal("https://www.google.com/maps")}>Abrir Google Maps ↗</button>
       </div>
 
       <div className="route-layout">
@@ -80,11 +85,10 @@ export default function RoutePlanner() {
             <div className="route-visual"><div className="route-line"><span className="route-pin start" /><span className="route-track" /><span className="route-pin end" /></div><div className="route-labels"><span>{origin || "Saída"}</span><span>{destination || "Destino"}</span></div></div>
             {stopList.length > 0 && <div className="stops-list"><strong>{stopList.length} parada(s)</strong>{stopList.map((stop, index) => <span key={`${stop}-${index}`}>{index + 1}. {stop}</span>)}</div>}
           </div>
-          <div className="panel route-discover"><div className="panel-title-row"><div><h3>Explore o destino</h3><p>Atalhos para organizar a visita.</p></div><span className="route-step">03</span></div><div className="discover-grid"><a href={searchBase ? mapsSearch(`hotéis em ${searchBase}`) : "https://www.google.com/maps"} target="_blank" rel="noreferrer"><span className="discover-icon hotel">⌂</span><span><strong>Hotéis</strong><small>Encontrar hospedagem</small></span><b>↗</b></a><a href={searchBase ? mapsSearch(`restaurantes em ${searchBase}`) : "https://www.google.com/maps"} target="_blank" rel="noreferrer"><span className="discover-icon food">✦</span><span><strong>Restaurantes</strong><small>Almoçar no caminho</small></span><b>↗</b></a><a href={searchBase ? mapsSearch(`postos de gasolina em ${searchBase}`) : "https://www.google.com/maps"} target="_blank" rel="noreferrer"><span className="discover-icon fuel">⌁</span><span><strong>Postos</strong><small>Abastecer na rota</small></span><b>↗</b></a><a href={searchBase ? mapsSearch(`clientes e empresas em ${searchBase}`) : "https://www.google.com/maps"} target="_blank" rel="noreferrer"><span className="discover-icon company">◈</span><span><strong>Empresas</strong><small>Pesquisar oportunidades</small></span><b>↗</b></a></div></div>
+          <div className="panel route-discover"><div className="panel-title-row"><div><h3>Explore o destino</h3><p>Atalhos para organizar a visita.</p></div><span className="route-step">03</span></div><div className="discover-grid"><a href={searchBase ? mapsSearch(`hotéis em ${searchBase}`) : "https://www.google.com/maps"} target="_self"><span className="discover-icon hotel">⌂</span><span><strong>Hotéis</strong><small>Encontrar hospedagem</small></span><b>↗</b></a><a href={searchBase ? mapsSearch(`restaurantes em ${searchBase}`) : "https://www.google.com/maps"} target="_self"><span className="discover-icon food">✦</span><span><strong>Restaurantes</strong><small>Almoçar no caminho</small></span><b>↗</b></a><a href={searchBase ? mapsSearch(`postos de gasolina em ${searchBase}`) : "https://www.google.com/maps"} target="_self"><span className="discover-icon fuel">⌁</span><span><strong>Postos</strong><small>Abastecer na rota</small></span><b>↗</b></a><a href={searchBase ? mapsSearch(`clientes e empresas em ${searchBase}`) : "https://www.google.com/maps"} target="_self"><span className="discover-icon company">◈</span><span><strong>Empresas</strong><small>Pesquisar oportunidades</small></span><b>↗</b></a></div></div>
         </div>
       </div>
       <div className="route-tip"><span>✦</span><div><strong>Dica para sua equipe</strong><p>Adicione cada cliente como uma parada. Depois abra no Google Maps para reorganizar a sequência e conferir o trânsito antes de sair.</p></div></div>
     </div>
   );
 }
-
