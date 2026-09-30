@@ -1,4 +1,4 @@
-# Gestão Vendas Tech
+# Tempo
 
 Base da plataforma SaaS de gestão comercial externa, com clientes, prospects, visitas,
 follow-ups, oportunidades, rotas e despesas.

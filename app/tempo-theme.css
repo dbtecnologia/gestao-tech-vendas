@@ -1,0 +1,28 @@
+/* Tempo identity layer: neutral workspace, violet navigation, restrained lime accent. */
+.brand.large::before { width: 174px; height: 44px; }
+.ai-orb { background: var(--tempo-purple); box-shadow: 0 8px 20px rgba(99,36,233,.25); }
+.chat-avatar { background: #eee8ff; color: var(--tempo-purple); }
+.chat-row.user .chat-avatar { background: var(--tempo-violet); color: #fff; }
+.chat-row.user .chat-bubble { background: var(--tempo-purple); }
+.ai-side button, .link, .row-action { color: var(--tempo-purple); }
+.integration-icon { background: #eee8ff; color: var(--tempo-purple); }
+.status { display: inline-flex; align-items: center; gap: 6px; color: var(--tempo-warning); }
+.status::before { content: "!"; display: inline-grid; place-items: center; width: 16px; height: 16px; border: 1px solid currentColor; border-radius: 50%; font-size: 10px; font-weight: 800; }
+.status.connected { color: var(--tempo-success); }
+.status.connected::before { content: "✓"; }
+.route-step { background: #eee8ff; color: var(--tempo-purple); }
+.route-status { background: #e8f7ef; color: var(--tempo-success); }
+.route-track { background: repeating-linear-gradient(90deg, var(--tempo-purple) 0 12px, transparent 12px 18px); }
+.route-pin { background: var(--tempo-purple); box-shadow: 0 0 0 2px var(--tempo-purple); }
+.route-pin.end { background: var(--tempo-lime); box-shadow: 0 0 0 2px #6b8500; }
+.route-labels span::before { display: block; color: var(--tempo-purple); font-weight: 800; font-size: 10px; margin-bottom: 2px; }
+.route-labels span:first-child::before { content: "01  SAÍDA"; }
+.route-labels span:last-child::before { content: "02  DESTINO"; color: #5e7700; }
+.discover-grid a:hover { border-color: #a98ae9; }
+.hotel { background: #eee8ff; color: var(--tempo-purple); }
+.food { background: #f1e6ff; color: #8a2dd8; }
+.fuel { background: #efffd8; color: #4b7800; }
+.company { background: #eee8ff; color: var(--tempo-purple); }
+.route-tip { background: #f2fbe1; border-color: #dceea9; color: #526b00; }
+.route-tip p { color: #667d18; }
+.route-error, .auth-message { color: var(--tempo-error); }

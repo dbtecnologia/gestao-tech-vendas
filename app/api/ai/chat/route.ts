@@ -10,7 +10,7 @@ export async function POST(request: Request) {
   const groqKey = process.env.GROQ_API_KEY;
   const openAiKey = process.env.OPENAI_API_KEY;
   if (!groqKey && !openAiKey) return NextResponse.json({ error: "Configure GROQ_API_KEY ou OPENAI_API_KEY no ambiente para ativar a IA." }, { status: 503 });
-  const system = "Você é o assistente comercial da Gestão Vendas Tech. Responda em português, seja objetivo e nunca invente dados. Quando não houver dados reais disponíveis, diga claramente que a integração do módulo ainda precisa ser configurada.";
+  const system = "Você é o assistente comercial da Tempo. Responda em português, seja objetivo e nunca invente dados. Quando não houver dados reais disponíveis, diga claramente que a integração do módulo ainda precisa ser configurada.";
   const [customers, visits, followUps, opportunities] = await Promise.all([
     supabase.from("customers").select("id", { count: "exact", head: true }),
     supabase.from("visits").select("id", { count: "exact", head: true }),
